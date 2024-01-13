@@ -63,8 +63,8 @@
             //                     |      |      |      |        |  |       |      |   DEL |       |
 
             bindings = <
-&kp LC(GRAVE)  &trans    &trans    &trans     &trans  &trans                    &trans       &trans    &trans     &trans     &kp K_MUTE  &kp K_VOL_UP
-&trans         &kp HOME  &kp UP    &kp END    &trans  &trans                    &trans       &trans    &trans     &trans     &trans      &kp K_VOLUME_DOWN
+&kp LC(GRAVE)  &trans    &trans    &trans     &trans  &trans                    &trans       &trans    &trans     &trans     &kp C_MUTE  &kp C_VOLUME_UP
+&trans         &kp HOME  &kp UP    &kp END    &trans  &trans                    &trans       &trans    &trans     &trans     &trans      &kp C_VOLUME_DOWN
 &trans         &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans                    &trans       &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT   &trans
 &trans         &trans    &trans    &trans     &trans  &trans  &trans    &trans  &kp KP_PLUS  &kp HOME  &kp PG_DN  &kp PG_UP  &kp END     &trans
                                    &trans     &trans  &trans  &trans    &trans  &trans       &trans    &trans
