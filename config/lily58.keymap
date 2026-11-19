@@ -20,6 +20,17 @@
 };
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        combo_show_keymap {
+            timeout-ms = <80>;
+            key-positions = <52 55>;
+            layers = <0>;
+            bindings = <&kp F13>;
+        };
+    };
+	
     keymap {
         compatible = "zmk,keymap";
 
