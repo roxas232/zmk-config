@@ -1,3 +1,4 @@
+
 /*
  * Copyright (c) 2020 The ZMK Contributors
  *
@@ -6,24 +7,28 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/keys.h>
 
+/* Existing mod-tap configuration */
 &mt {
     tapping-term-ms = <300>;
     flavor = "tap-preferred";
+};
+
+/* Caps Word: support underscores and hyphens */
+&caps_word {
+    continue-list = <UNDERSCORE MINUS BACKSPACE DELETE>;
 };
 
 / {
     keymap {
         compatible = "zmk,keymap";
 
+        /* ==========================================
+         * LAYER 0: BASE
+         * Unchanged: QWERTY and gaming keys.
+         * ========================================== */
         default_layer {
-            // ------------------------------------------------------------------------------------------------------------
-            // |  ESC  |  1  |  2  |  3   |  4   |  5   |                   |  6   |  7    |  8    |  9   |   0   |   =   |
-            // |  TAB  |  Q  |  W  |  E   |  R   |  T   |                   |  Y   |  U    |  I    |  O   |   P   |   -   |
-            // |  CTRL |  A  |  S  |  D   |  F   |  G   |                   |  H   |  J    |  K    |  L   |   ;   |   '   |
-            // | SHIFT |  Z  |  X  |  C   |  V   |  B   |   "["  |  |  "]"  |  N   |  M    |  ,    |  .   |   /   |   \   |
-            //                     | ALT  | GUI  | LOWER|  SPACE |  | ENTER | RAISE| BSPC  |  CTRL |
+            display-name = "Base";
 
             bindings = <
 &kp ESC    &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &kp NUMBER_5                         &mt F6 NUMBER_6  &mt F7 N7  &mt F8 N8  &mt F9 N9  &mt F10 N0  &mt F11 EQUAL
@@ -36,39 +41,37 @@
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
+        /* ==========================================
+         * LAYER 1: LOWER
+         * Function keys and media controls.
+         * ========================================== */
         lower_layer {
-            // ------------------------------------------------------------------------------------------------------------
-            // | BTCLR | BT1 | BT2 |  BT3 |  BT4 |  BT5 |                   |  V0  | V-    | V+    |      |       |  PGUP |
-            // |       | HOME|  ^  |  END |      |      |                   |      |       |       |      |       |  PGDWN|
-            // |   `   |  <- |  v  |  ->  |  $   |  %   |                   |  ^   |  &    |  *    |  (   |   )   |   ~   |
-            // |       |     |     |      |      |      |    &   |  |  "|"  |      |  _    |  +    |  {   |   }   |  "|"  |
-            //                     |      |      |      |        |  |       |      |  DEL  |       |
+            display-name = "Function";
 
             bindings = <
-&trans     &kp F1    &kp F2    &kp F3     &kp F4  &kp F5                        &kp F1  &kp F2    &kp F3     &kp F4     &kp F5     &kp F6
-&trans     &kp HOME  &kp UP    &kp END    &trans  &trans                        &kp F7  &kp F8    &kp F9     &kp F10    &kp F11    &kp F12
-&kp GRAVE  &kp LEFT  &kp DOWN  &kp RIGHT  &kt F   &trans                        &trans  &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &kp TILDE
-&trans     &trans    &trans    &trans     &trans  &trans  &kp AMPS    &kp PIPE  &trans  &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &trans
-                               &trans     &trans  &trans  &trans      &trans    &trans  &trans    &trans
+&kp F1    &kp F2    &kp F3    &kp F4    &kp F5    &kp F6                         &kp F7    &kp F8    &kp F9    &kp F10    &kp F11    &kp F12
+&trans    &trans    &trans    &trans    &trans    &trans                         &kp C_MUTE &kp C_VOLUME_DOWN &kp C_VOLUME_UP &kp K_PREV &kp K_PLAY_PAUSE &kp K_NEXT
+&trans    &trans    &trans    &trans    &trans    &trans                         &trans    &trans    &trans    &trans    &trans    &trans
+&trans    &trans    &trans    &trans    &trans    &trans    &trans    &trans      &trans    &trans    &trans    &trans    &trans    &trans
+                                      &trans    &trans    &trans    &trans      &trans    &trans    &trans    &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
+        /* ==========================================
+         * LAYER 2: RAISE
+         * Programming symbols and navigation.
+         * ========================================== */
         raise_layer {
-            // ------------------------------------------------------------------------------------------------------------
-            // |       |  F1 | F2  |   F3 |  F4  |  F5  |                   |  F6  |   F7  |   F8  | F9   | F10   |  F11  |
-            // |       | HOME|  ^  |  END |      |      |                   |      |       |       |      |       |  F12  |
-            // |       |  <- |  v  |  ->  |      |      |                   |      |   <-  |   v   |  ^   |  ->   |       |
-            // |       |     |     |      |      |      |        |  |       |  +   |   -   |   =   |  [   |   ]   |   \   |
-            //                     |      |      |      |        |  |       |      |   DEL |       |
+            display-name = "Navigation & Symbols";
 
             bindings = <
-&kp LC(GRAVE)  &trans    &trans    &trans     &trans  &trans                    &trans       &trans    &trans     &trans     &kp C_MUTE  &kp C_VOLUME_UP
-&trans         &kp HOME  &kp UP    &kp END    &trans  &trans                    &trans       &trans    &trans     &trans     &trans      &kp C_VOLUME_DOWN
-&trans         &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans                    &trans       &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT   &trans
-&trans         &trans    &trans    &trans     &trans  &trans  &trans    &trans  &kp KP_PLUS  &kp HOME  &kp PG_DN  &kp PG_UP  &kp END     &trans
-                                   &trans     &trans  &trans  &trans    &trans  &trans       &trans    &trans
+&trans     &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT                       &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR   &kp RPAR   &kp PLUS
+&trans     &kp GRAVE   &kp LBKT    &kp RBKT    &kp LBRC    &kp RBRC                        &kp MINUS  &kp EQUAL  &kp BSLH   &kp PIPE   &kp UNDER  &kp TILDE
+&trans     &kp COLON   &kp SEMI    &kp SQT     &kp DQT     &kp COMMA                       &trans     &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &trans
+&trans     &kp LT      &kp GT      &kp FSLH    &kp QUESTION &kp BSLH   &kp PIPE  &kp TILDE  &trans     &kp HOME   &kp PG_UP  &kp PG_DN  &kp END    &trans
+                                      &trans    &trans    &trans    &trans      &trans    &trans    &trans    &caps_word
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
