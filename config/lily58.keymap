@@ -81,7 +81,7 @@
 &trans     &kp EXCL    &kp AT      &kp HASH    &kp DLLR    &kp PRCNT                       &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR   &kp RPAR   &kp PLUS
 &trans     &kp GRAVE   &kp LBKT    &kp RBKT    &kp LBRC    &kp RBRC                        &kp MINUS  &kp EQUAL  &kp BSLH   &kp PIPE   &kp UNDER  &kp TILDE
 &trans     &kp COLON   &kp SEMI    &kp SQT     &kp DQT     &kp COMMA                       &trans     &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT  &trans
-&trans     &kp LT      &kp GT      &kp FSLH    &kp QUESTION &kp BSLH   &kp PIPE  &kp TILDE  &trans     &kp HOME   &kp PG_UP  &kp PG_DN  &kp END    &trans
+&trans     &kp LT      &kp GT      &kp FSLH    &kp QUESTION &kp BSLH   &kp PIPE  &kp TILDE  &trans     &kp HOME   &kp PG_DN  &kp PG_UP  &kp END    &trans
                                       &trans    &trans    &trans    &trans      &trans    &trans    &trans    &caps_word
             >;
 
